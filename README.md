@@ -17,7 +17,7 @@ A background daemon for monitoring AI agent sessions across multiple tools.
 pip install agent-monitor
 
 # Or install from source
-git clone https://github.com/bobbyprice/agent-monitor.git
+git clone https://github.com/robertcprice/agent-monitor.git
 cd agent-monitor
 pip install -e .
 ```
@@ -85,7 +85,7 @@ launchctl start com.user.agent-monitor
 
 ```bash
 # Clone the repo
-git clone https://github.com/bobbyprice/agent-monitor.git
+git clone https://github.com/robertcprice/agent-monitor.git
 cd agent-monitor
 
 # Create virtual environment
