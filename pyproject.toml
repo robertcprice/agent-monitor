@@ -1,0 +1,77 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "agent-monitor"
+version = "0.1.0"
+description = "A daemon for monitoring AI agent sessions across multiple tools"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+authors = [
+    { name = "Bobby Price" }
+]
+keywords = ["ai", "agent", "monitoring", "claude", "llm", "daemon"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Quality Assurance",
+]
+dependencies = [
+    "aiosqlite>=0.19.0",
+    "psutil>=5.9.0",
+    "watchfiles>=0.21.0",
+    "textual>=0.47.0",
+    "fastapi>=0.109.0",
+    "uvicorn>=0.27.0",
+    "websockets>=12.0",
+    "rich>=13.7.0",
+    "typer>=0.9.0",
+    "pydantic>=2.5.0",
+    "python-dateutil>=2.8.0",
+    "pyyaml>=6.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=4.1.0",
+    "ruff>=0.1.0",
+    "mypy>=1.8.0",
+]
+
+[project.scripts]
+agent-monitor = "agent_monitor.cli:app"
+
+[project.urls]
+Homepage = "https://github.com/bobbyprice/agent-monitor"
+Repository = "https://github.com/bobbyprice/agent-monitor"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/agent_monitor"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
